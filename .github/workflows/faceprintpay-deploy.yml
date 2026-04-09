@@ -1,3 +1,6 @@
+# GH-PAGES FIX: If 403 error, set Workflow permissions to "Read and write"
+# URL: https://github.com/FacePrintPay/<repo>/settings/actions
+
 name: FacePrintPay CI/CD
 on:
   push:
@@ -32,4 +35,5 @@ jobs:
         if: success()
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          if: hashFiles('./dist/**') != ''
           publish_dir: ./dist
